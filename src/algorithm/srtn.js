@@ -2,7 +2,6 @@ const srtn = input => {
 	console.log("SRTN", input)
 	var sequenceStack = objectToSequenceStack(input);
 	var checkingPurposeStack = objectToSequenceStack(input);
-	console.log(input);
 	console.log(sequenceStack);
 	var waitingStack = [];
 	var processSequence = {};
@@ -117,7 +116,9 @@ const srtn = input => {
 	console.log("SRTN", processSequence);
 	return processSequence;
 };
+
 export default srtn;
+
 const checkFirstArrivalProcess = (firstElement, processSequence) => {
 	if(firstElement.arrival !== 0) {
 		processSequence[firstElement.arrival] = null;
@@ -217,16 +218,17 @@ const compareProcess = (firstProcess, secondProcess) => {
 
 const objectToSequenceStack = input => {
 	var result = Object.keys(input).map(key => {
-		return [key, input[key].arrival, input[key].priority];
+		return [key, input[key].arrival, input[key].burst, input[key].priority];
 	});
 
 	var queuedArray = result.sort((a, b) => {
 		if(a[1] === b[1]) {
+			if(a[2] === b[2]) {
+				return a[3] - b[3]
+			}
 			return a[2] - b[2];
 		}
-		else {
-			return a[1] - b[1];
-		}
+		return a[1] - b[1];
 	});
 
 	var sequence = queuedArray.map(item => {
