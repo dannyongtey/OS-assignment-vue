@@ -122,12 +122,12 @@ export default {
 	methods: {
 		fixWidth(total) {
 			// console.log(total)
-			return (this.width / 2) / total
+			return Math.floor((this.width / 2) / total)
 		},
 		dynamicWidth(total, myLength) {
 			// console.log(myLength)
 			// /console.log(Math.max.apply(Math, Object.values(total)))
-			return ((this.width / 2) / total) * myLength
+			return Math.floor(((this.width / 2) / total) * myLength)
 		},
 		testing: function() {
 			this.rowCount++;
