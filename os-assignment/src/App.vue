@@ -26,6 +26,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 60px auto 0 auto;
-  max-width: 1050px;  
+  /* max-width: 1050px;   */
 }
 </style>

@@ -1,7 +1,7 @@
 
-function computeTLQ(procObj){
+export default function computeTLQ(procObj){
     const QUANTUM = 2
-    const Q1 = [1,2]
+    const Q1 = [0,1,2]
     const Q2 = [3,4]
     const Q3 = [5,6]
     let results = {}
@@ -34,7 +34,7 @@ function computeTLQ(procObj){
         })
     })
     console.log(priorityList)
-    runningPriorities = []
+    let runningPriorities = []
   
     // Sort by ascending time
     let enterTime = Object.keys(entryTime).sort((a,b) => {
@@ -57,7 +57,7 @@ function computeTLQ(procObj){
         }
         // console.log(runningPriorities)
         // Find the one with the highest priority
-        highest = Math.min.apply(Math, runningPriorities).toString()
+        let highest = Math.min.apply(Math, runningPriorities).toString()
         console.log("Highest is", highest)
         let firstProcTime, lastProcTime
         while (true){ // This loop will execute RR for the same priority process, and then proceed with the lower priority until the next process comes in

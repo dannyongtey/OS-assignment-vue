@@ -28,12 +28,18 @@ export default {
 			console.log();
 		},
 		onDataChange: function() {
-			this.$parent.updateProcessObject({
+			this.$emit('updateProcess', {
 				processName: this.pName,
 				burst: this.burst,
 				arrival: this.arrival,
-				priority: this.priority
-			});
+				priority: this.priority,
+			})
+			// this.$parent.updateProcessObject({
+			// 	processName: this.pName,
+			// 	burst: this.burst,
+			// 	arrival: this.arrival,
+			// 	priority: this.priority
+			// });
 			this.oldPName = this.pName;
 		},
 		onPNameChange: function() {

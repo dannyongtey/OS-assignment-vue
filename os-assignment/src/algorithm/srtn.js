@@ -1,4 +1,5 @@
 const srtn = input => {
+	console.log("SRTN", input)
 	var sequenceStack = objectToSequenceStack(input);
 	var checkingPurposeStack = objectToSequenceStack(input);
 	console.log(input);
@@ -113,10 +114,10 @@ const srtn = input => {
 	}
 
 	checkFirstArrivalProcess(input[checkingPurposeStack.pop()], processSequence);
-	console.log(processSequence);
+	console.log("SRTN", processSequence);
 	return processSequence;
 };
-
+export default srtn;
 const checkFirstArrivalProcess = (firstElement, processSequence) => {
 	if(firstElement.arrival !== 0) {
 		processSequence[firstElement.arrival] = null;
@@ -234,5 +235,3 @@ const objectToSequenceStack = input => {
 
 	return sequence.reverse();
 };
-
-module.exports = srtn;

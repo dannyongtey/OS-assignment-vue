@@ -1,40 +1,41 @@
-let procObj = 
-{
-    P0: {
-        arrival: 9,
-        burst: 6,
-        priority: 3,
-    },
-    P1: {
-        arrival: 1,
-        burst: 4,
-        priority: 3,
-    },
-    P2: {
-        arrival: 18,
-        burst: 6,
-        priority: 1,
-    },
-    P3: {
-        arrival: 6,
-        burst: 6,
-        priority: 1,
-    },
-    P4: {
-        arrival: 7,
-        burst: 6,
-        priority: 5,
-    },
-    P5: {
-        arrival: 8,
-        burst: 6,
-        priority: 6,
-    },
-}
-console.log(computeTLQ(procObj))
+// let procObj = 
+// {
+//     P0: {
+//         arrival: 9,
+//         burst: 6,
+//         priority: 3,
+//     },
+//     P1: {
+//         arrival: 1,
+//         burst: 4,
+//         priority: 3,
+//     },
+//     P2: {
+//         arrival: 18,
+//         burst: 6,
+//         priority: 1,
+//     },
+//     P3: {
+//         arrival: 6,
+//         burst: 6,
+//         priority: 1,
+//     },
+//     P4: {
+//         arrival: 7,
+//         burst: 6,
+//         priority: 5,
+//     },
+//     P5: {
+//         arrival: 8,
+//         burst: 6,
+//         priority: 6,
+//     },
+// }
+// console.log(computeTLQ(procObj))
 
-function computeRR(procObj){
-    const QUANTUM = 5
+export default function computeRR(procObj){
+    console.log(procObj)
+    const QUANTUM = 2
     let results = {}
     // Entry time extraction
     let entryTime = {}
@@ -64,7 +65,7 @@ function computeRR(procObj){
             }
         })
     })
-    runningPriorities = []
+    let runningPriorities = []
     // Sort by ascending time
     let enterTime = Object.keys(entryTime).sort((a,b) => {
         return parseInt(a) > parseInt(b)
@@ -73,7 +74,7 @@ function computeRR(procObj){
     if (currentTime != 0){
         results[currentTime] = null
     }
-    console.log(enterTime)
+    // console.log(enterTime)
     let done = false
     for (let i = 0; i < enterTime.length; i++){
         const curEntry = enterTime[i]
@@ -82,12 +83,12 @@ function computeRR(procObj){
         if (parseInt(curEntry) < currentTime && i !== enterTime.length - 1){
             continue
         }
-        console.log(runningPriorities)
+        // console.log(runningPriorities)
         // Find the one with the highest priority
-        highest = Math.min.apply(Math, runningPriorities).toString()
+        let highest = Math.min.apply(Math, runningPriorities).toString()
         let firstProcTime, lastProcTime
         while (true){ // This loop will execute RR for the same priority process, and then proceed with the lower priority until the next process comes in
-            
+            // console.log(priorityList)
             const priorityLength = priorityList[highest].processes.length
             // Set current running process, at the end will increment. Current process is key
             let index = priorityList[highest].current % priorityLength
