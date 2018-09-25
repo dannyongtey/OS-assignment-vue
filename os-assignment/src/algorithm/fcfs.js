@@ -3,11 +3,11 @@ const fcfs = (input) => {
         sortedProcessId = Object.keys(input).sort((p1, p2) => (input[p1].arrival - input[p2].arrival));
     let execution = {}, currentProcessId = sortedProcessId[0], t = 0;
     while (t < totalBurstTime) {
-        execution[t] = currentProcessId;
         const currentProcess = input[currentProcessId]; // get current process config
         const duration = t + currentProcess.burst;
         // get processes that arrive between t and duration where priority is higher than the current process
         let arrivedProcesses = sortedProcessId.filter(p => (input[p].arrival > t && input[p].arrival <= t + duration) && input[p].priority < currentProcess.priority);
+        
         if (arrivedProcesses.length === 0) {
             // if no superior process arrive between this timeframe, we will finish the current process first
             currentProcess.completed = true;
@@ -15,7 +15,7 @@ const fcfs = (input) => {
             // then find the next best process in the waiting list
             const waitingList = sortedProcessId.filter((p) => !input[p].completed);
             const superior = waitingList.sort((p1, p2) => input[p1].priority - input[p2].priority);
-            currentProcessId = superior[0];
+            if ( superior[0] ) currentProcessId = superior[0];
         } else {
             // else get the process that arrived first 
             const superior = arrivedProcesses[0];
@@ -24,6 +24,7 @@ const fcfs = (input) => {
             t += diff;
             currentProcessId = superior;
         }
+        execution[t] = currentProcessId;
     }
     return execution
 }

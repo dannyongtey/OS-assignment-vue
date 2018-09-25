@@ -89,7 +89,9 @@ export default {
 		},
 		shortestJob() {
 			let obj = JSON.parse(JSON.stringify(this.processObject))
-			return srtn(obj)
+			let tempObj = srtn(obj)
+			delete tempObj[0] // Remove time 0
+			return tempObj
 		},
 		roundRobin() {
 			let obj = JSON.parse(JSON.stringify(this.processObject))
@@ -102,10 +104,11 @@ export default {
 		
 	},
 	mounted() {
-		this.width = window.innerWidth * 0.9
+		
+		this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.99
 		let onresize = (e) => {
 		//note i need to pass the event as an argument to the function
-			this.width = e.target.innerWidth * 0.9;
+			this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.99
 			// console.log(width)
 			// height = e.target.outerHeight;
 		}
@@ -184,6 +187,7 @@ export default {
 .brutal-fcfs{
 	height: 100px;
 	margin-top: 20px;
+	border-right: 1px solid black;
 	/* border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	border */
