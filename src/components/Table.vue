@@ -32,7 +32,7 @@
 		<h3>RR</h3>
 		
 		<div class = "brutal-fcfs">
-			<div v-for="(proc,time,index) in roundRobin" :key="proc" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(roundRobin).length) + dynamicWidth(Math.max.apply(Math, Object.keys(roundRobin)),
+			<div v-for="(proc,time,index) in roundRobin" :key="proc" :class="{noBorder: index != 0? proc == Object.values(roundRobin)[index-1] ? true : false : false}" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(roundRobin).length) + dynamicWidth(Math.max.apply(Math, Object.keys(roundRobin)),
 			index != 0 ? parseInt(Object.keys(roundRobin)[index]) - parseInt(Object.keys(roundRobin)[index-1]) : parseInt(time)) + 'px' )}">{{proc}} <div>{{ time }}</div>	</div>
 		</div>
 
@@ -122,12 +122,12 @@ export default {
 	methods: {
 		fixWidth(total) {
 			// console.log(total)
-			return (this.width / 2) / total
+			return Math.floor((this.width / 2) / total)
 		},
 		dynamicWidth(total, myLength) {
 			// console.log(myLength)
 			// /console.log(Math.max.apply(Math, Object.values(total)))
-			return ((this.width / 2) / total) * myLength
+			return Math.floor(((this.width / 2) / total) * myLength)
 		},
 		testing: function() {
 			this.rowCount++;
