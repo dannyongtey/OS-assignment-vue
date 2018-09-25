@@ -32,7 +32,7 @@
 		<h3>RR</h3>
 		
 		<div class = "brutal-fcfs">
-			<div v-for="(proc,time,index) in roundRobin" :key="proc" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(roundRobin).length) + dynamicWidth(Math.max.apply(Math, Object.keys(roundRobin)),
+			<div v-for="(proc,time,index) in roundRobin" :key="proc" :class="{noBorder: index != 0? proc == Object.values(roundRobin)[index-1] ? true : false : false}" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(roundRobin).length) + dynamicWidth(Math.max.apply(Math, Object.keys(roundRobin)),
 			index != 0 ? parseInt(Object.keys(roundRobin)[index]) - parseInt(Object.keys(roundRobin)[index-1]) : parseInt(time)) + 'px' )}">{{proc}} <div>{{ time }}</div>	</div>
 		</div>
 
@@ -105,10 +105,10 @@ export default {
 	},
 	mounted() {
 		
-		this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.99
+		this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.98
 		let onresize = (e) => {
 		//note i need to pass the event as an argument to the function
-			this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.99
+			this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.98
 			// console.log(width)
 			// height = e.target.outerHeight;
 		}
