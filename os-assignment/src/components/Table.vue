@@ -105,10 +105,10 @@ export default {
 	},
 	mounted() {
 		
-		this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.98
+		this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.96
 		let onresize = (e) => {
 		//note i need to pass the event as an argument to the function
-			this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.98
+			this.width = document.getElementsByClassName("brutal-fcfs")[0].offsetWidth * 0.96
 			// console.log(width)
 			// height = e.target.outerHeight;
 		}
