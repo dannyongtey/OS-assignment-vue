@@ -5,7 +5,8 @@ const fcfs = (input) => {
     while (t < totalBurstTime) {
         // execution[t] = currentProcessId;
         const currentProcess = input[currentProcessId]; // get current process config
-        const duration = t + currentProcess.burst;
+        const timeDiff = currentProcess.arrival - t <= 0 ? t : t + (currentProcess.arrival - t);
+        const duration = timeDiff + currentProcess.burst;
         // get processes that arrive between t and duration where priority is higher than the current process
         let arrivedProcesses = sortedProcessId.filter(p => (input[p].arrival > t && input[p].arrival <= t + duration) && input[p].priority < currentProcess.priority);
         
@@ -28,45 +29,50 @@ const fcfs = (input) => {
         execution[t] = currentProcessId;
         currentProcessId = superiorOrder[0];
         
-       
+      
     }
     return execution
 }
 
 // export default fcfs;
 // Test input 
-// const input = {
-//     p0: {
-//         burst: 6,
-//         arrival: 0,
-//         priority: 3
-//     },
-//     p1: {
-//         burst: 4,
-//         arrival: 1,
-//         priority: 3
-//     },
-//     p2: {
-//         burst: 6,
-//         arrival: 5,
-//         priority: 1
-//     },
-//     p3: {
-//         burst: 6,
-//         arrival: 6,
-//         priority: 1
-//     },
-//     p4: {
-//         burst: 6,
-//         arrival: 7,
-//         priority: 5
-//     },
-//     p5: {
-//         burst: 6,
-//         arrival: 8,
-//         priority: 6
-//     }
-// };
+const input = {
+    p0: {
+        burst: 6,
+        arrival: 0,
+        priority: 3
+    },
+    p1: {
+        burst: 4,
+        arrival: 1,
+        priority: 3
+    },
+    p2: {
+        burst: 6,
+        arrival: 5,
+        priority: 1
+    },
+    p3: {
+        burst: 6,
+        arrival: 6,
+        priority: 1
+    },
+    p4: {
+        burst: 6,
+        arrival: 7,
+        priority: 5
+    },
+    p5: {
+        burst: 6,
+        arrival: 8,
+        priority: 6
+    },
+    p6: {
+        burst: 6,
+        arrival: 40,
+        priority: 6
+    }
+};
 
-// console.log(fcfs(input));
+console.log(fcfs(input));
 
