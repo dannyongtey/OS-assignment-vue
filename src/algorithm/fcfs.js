@@ -5,10 +5,11 @@ const fcfs = (input) => {
     while (t < totalBurstTime) {
         // execution[t] = currentProcessId;
         const currentProcess = input[currentProcessId]; // get current process config
-        const duration = t + currentProcess.burst;
+        const timeDiff = currentProcess.arrival - t <= 0 ? t : t + (currentProcess.arrival - t);
+        const duration = timeDiff + currentProcess.burst;
         // get processes that arrive between t and duration where priority is higher than the current process
         let arrivedProcesses = sortedProcessId.filter(p => (input[p].arrival > t && input[p].arrival <= t + duration) && input[p].priority < currentProcess.priority);
-        console.log("PREV WONG WAS HERE")
+        
         if (arrivedProcesses.length === 0) {
             // if no superior process arrive between this timeframe, we will finish the current process first
             currentProcess.completed = true;
@@ -28,7 +29,7 @@ const fcfs = (input) => {
         execution[t] = currentProcessId;
         currentProcessId = superiorOrder[0];
         
-       
+      
     }
     return execution
 }
