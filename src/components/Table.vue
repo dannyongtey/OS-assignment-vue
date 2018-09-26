@@ -20,27 +20,27 @@
 		<h3>FCFS</h3>
 		<div class = "brutal-fcfs">
 			<div v-for="(proc,time,index) in firstCome" :key="proc" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(firstCome).length) + dynamicWidth(Math.max.apply(Math, Object.keys(firstCome)),
-			index != 0 ? parseInt(Object.keys(firstCome)[index]) - parseInt(Object.keys(firstCome)[index-1]) : parseInt(time)) + 'px' )}">{{proc}} <div>{{ time }}</div>	</div>
+			index != 0 ? parseInt(Object.keys(firstCome)[index]) - parseInt(Object.keys(firstCome)[index-1]) : parseInt(time)) + 'px' )}">{{proc == null? "" : proc}} <div>{{ time }}</div>	</div>
 		</div>
 
 		<h3>SRTN</h3>
 		<div class = "brutal-fcfs">
 			<div v-for="(proc,time,index) in shortestJob" :key="proc" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(shortestJob).length) + dynamicWidth(Math.max.apply(Math, Object.keys(shortestJob)),
-			index != 0 ? parseInt(Object.keys(shortestJob)[index]) - parseInt(Object.keys(shortestJob)[index-1]) : parseInt(time)) + 'px' )}">{{proc}} <div>{{ time }}</div>	</div>
+			index != 0 ? parseInt(Object.keys(shortestJob)[index]) - parseInt(Object.keys(shortestJob)[index-1]) : parseInt(time)) + 'px' )}">{{proc == null? "" : proc}} <div>{{ time }}</div>	</div>
 		</div>
 
 		<h3>RR</h3>
 		
 		<div class = "brutal-fcfs">
 			<div v-for="(proc,time,index) in roundRobin" :key="proc" :class="{noBorder: index != 0? proc == Object.values(roundRobin)[index-1] ? true : false : false}" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(roundRobin).length) + dynamicWidth(Math.max.apply(Math, Object.keys(roundRobin)),
-			index != 0 ? parseInt(Object.keys(roundRobin)[index]) - parseInt(Object.keys(roundRobin)[index-1]) : parseInt(time)) + 'px' )}">{{proc}} <div>{{ time }}</div>	</div>
+			index != 0 ? parseInt(Object.keys(roundRobin)[index]) - parseInt(Object.keys(roundRobin)[index-1]) : parseInt(time)) + 'px' )}">{{proc == null? "": proc}} <div>{{ time }}</div>	</div>
 		</div>
 
 		<h3>TLQ</h3>
 		<div class = "brutal-fcfs">
 			
 			<div v-for="(proc,time,index) in threeLevel" :key="proc" :class="{noBorder: index != 0? proc == Object.values(threeLevel)[index-1] ? true : false : false}" class="brutal-pieces" :style="{ width: (fixWidth(Object.keys(threeLevel).length) + dynamicWidth(Math.max.apply(Math, Object.keys(threeLevel)),
-			index != 0 ? parseInt(Object.keys(threeLevel)[index]) - parseInt(Object.keys(threeLevel)[index-1]) : parseInt(time)) + 'px' )}">{{proc}} <div>{{ time }}</div>	</div>
+			index != 0 ? parseInt(Object.keys(threeLevel)[index]) - parseInt(Object.keys(threeLevel)[index-1]) : parseInt(time)) + 'px' )}">{{proc == null? "": proc}} <div>{{ time }}</div>	</div>
 		</div>
 
 	</div>
