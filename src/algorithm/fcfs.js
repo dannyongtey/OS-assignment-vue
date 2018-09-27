@@ -1,5 +1,8 @@
 const fcfs = (originalInput) => {
-    const input = {...originalInput}; 
+    const input = Object.keys({...originalInput}).reduce((result, p) => {
+        if ( originalInput[p].burst > 0 ) result[p] = originalInput[p];
+        return result;
+    }, {});
     const sortedProcessId = Object.keys(input).sort((p1, p2) => (input[p1].arrival - input[p2].arrival));
     let execution = {}, currentProcessId = sortedProcessId[0], t = 0, superiorOrder = [];
     while (true) {
