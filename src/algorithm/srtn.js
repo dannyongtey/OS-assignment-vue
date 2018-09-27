@@ -1,5 +1,8 @@
-const srtn = input => {
-	console.log("SRTN", input)
+const srtn = rawInput => {
+	console.log("SRTN-input", rawInput);
+	var input = cleanseInput(rawInput);
+	if(Object.keys(input).length === 0) return {};
+
 	var sequenceStack = objectToSequenceStack(input);
 	var checkingPurposeStack = objectToSequenceStack(input);
 	console.log(sequenceStack);
@@ -60,8 +63,10 @@ const srtn = input => {
 		}
 		else {
 			if(input[nextProcess].arrival - (currentStartTime + input[currentProcess].burst) > 0 && waitingStack.length === 0) {
-				processSequence[currentStartTime + input[currentProcess].burst] = currentProcess;
-
+				if(input[currentProcess].burst !== 0){
+					processSequence[currentStartTime + input[currentProcess].burst] = currentProcess;
+				}
+				
 				processSequence[input[nextProcess].arrival] = null;
 
 				currentProcess = nextProcess;
@@ -95,7 +100,12 @@ const srtn = input => {
 			nextProcess = waitingStackUpcomingProcess(input, waitingStack);
 		}
 		else {
-			processSequence[input[currentProcess].burst + currentStartTime] = currentProcess;
+			if(input[currentProcess].burst === 0) {
+				processSequence[currentStartTime] = null
+			}
+			else {
+				processSequence[input[currentProcess].burst + currentStartTime] = currentProcess;
+			}
 			break;
 		}
 		
@@ -237,3 +247,13 @@ const objectToSequenceStack = input => {
 
 	return sequence.reverse();
 };
+
+const cleanseInput = input => {
+	Object.keys(input).map(key => {
+		if (input[key].burst === 0) {
+			delete input[key]
+		}
+	})
+
+	return input;
+}
