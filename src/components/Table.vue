@@ -188,14 +188,13 @@ export default {
 	height: 100px;
 	margin-top: 20px;
 	border-right: 1px solid black;
-	/* border-top: 1px solid black;
+	border-top: 1px solid black;
 	border-bottom: 1px solid black;
-	border */
 	
 }
 
 .brutal-pieces {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	border-right: none;
 	float: left;
 	text-align: center;
