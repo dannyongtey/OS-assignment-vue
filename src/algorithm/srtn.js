@@ -1,11 +1,11 @@
 const srtn = rawInput => {
-	console.log("SRTN-input", rawInput);
+	// console.log("SRTN-input", rawInput);
 	var input = cleanseInput(rawInput);
 	if(Object.keys(input).length === 0) return {};
 
 	var sequenceStack = objectToSequenceStack(input);
 	var checkingPurposeStack = objectToSequenceStack(input);
-	console.log(sequenceStack);
+	// console.log(sequenceStack);
 	var waitingStack = [];
 	var processSequence = {};
 
@@ -123,7 +123,7 @@ const srtn = rawInput => {
 	}
 
 	checkFirstArrivalProcess(input[checkingPurposeStack.pop()], processSequence);
-	console.log("SRTN", processSequence);
+	// console.log("SRTN", processSequence);
 	return processSequence;
 };
 

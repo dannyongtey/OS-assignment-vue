@@ -25,7 +25,7 @@ export default {
 	},
 	methods: {
 		testing: function() {
-			console.log();
+			// console.log();
 		},
 		onDataChange: function() {
 			this.$emit('updateProcess', {

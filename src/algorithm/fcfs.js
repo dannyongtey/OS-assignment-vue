@@ -37,7 +37,7 @@ const fcfs = (originalInput) => {
             currentProcessId = superiorOrder[0];
         }
     }
-    console.log("FCFS >> ", execution)
+    // console.log("FCFS >> ", execution)
     return execution
     
 }

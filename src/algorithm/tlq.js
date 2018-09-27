@@ -33,7 +33,7 @@ export default function computeTLQ(procObj){
             }
         })
     })
-    console.log(priorityList)
+    // console.log(priorityList)
     let runningPriorities = []
   
     // Sort by ascending time
@@ -48,7 +48,7 @@ export default function computeTLQ(procObj){
     let done = false
     for (let i = 0; i < enterTime.length; i++){
         const curEntry = enterTime[i]
-        console.log(enterTime[i])
+        // console.log(enterTime[i])
         // The priority groups included in the current time frame
         runningPriorities.push(...entryTime[curEntry])
         if (parseInt(curEntry) < currentTime && i !== enterTime.length - 1){
@@ -58,7 +58,7 @@ export default function computeTLQ(procObj){
         // console.log(runningPriorities)
         // Find the one with the highest priority
         let highest = Math.min.apply(Math, runningPriorities).toString()
-        console.log("Highest is", highest)
+        // console.log("Highest is", highest)
         let firstProcTime, lastProcTime
         while (true){ // This loop will execute RR for the same priority process, and then proceed with the lower priority until the next process comes in
             
@@ -76,7 +76,7 @@ export default function computeTLQ(procObj){
             // Is it the process' turn to execute?
             if (procObj[proc].arrival <= currentTime && procObj[proc].burst > 0){
                 // Execute the process, decrease the burst time and increase the current time
-                console.log("Executing", proc)
+                // console.log("Executing", proc)
                 let blockSize
                 if (highest == 1){
                     // Round Robin
@@ -100,12 +100,12 @@ export default function computeTLQ(procObj){
             priorityList[highest].current++
             // Has all entry time been processed? And if not, should we pay attention to next entry time?
             if (enterTime[i+1] !== undefined && currentTime >= parseInt(enterTime[i+1])){
-                console.log("Will break")
+                // console.log("Will break")
                 break
             }
             // Has the priority group finished running?
             if (firstProcTime == currentTime && lastProcTime == currentTime){
-                console.log("priority finish running")
+                // console.log("priority finish running")
                 // If it has, switch to the next lower priority group to execute
                 let tempPriorities = runningPriorities.filter(e => e > highest)
                 highest = Math.min.apply(Math, tempPriorities).toString()

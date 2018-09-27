@@ -113,6 +113,8 @@ export default {
 			// height = e.target.outerHeight;
 		}
 		window.addEventListener("resize", onresize)
+		console.log("Written using Brutal UI. What does it mean?")
+		console.log("That means as long as you can understand the UI, it's sufficient already.")
 	},
 	components: {
 		AlgorithmSelection,
@@ -132,7 +134,7 @@ export default {
 		testing: function() {
 			this.rowCount++;
 			//this.addIntoProcessObject(`P${this.rowCount}`);
-			console.log(this.processObject);
+			// console.log(this.processObject);
 		},
 		addIntoProcessObject: function() {
 			this.rowCount++;
@@ -153,7 +155,7 @@ export default {
 				priority: 0
 			});
 
-			console.log(this.processObject);
+			// console.log(this.processObject);
 		},
 		checkExistProcess: function(pName) {
 			if(!!Object.keys(this.processObject).find(e => e === pName)) {
@@ -169,7 +171,7 @@ export default {
 			});
 			
 			this.rowCount = Object.keys(this.processObject).length;
-			console.log(this.processObject);
+			// console.log(this.processObject);
 		},
 		deleteRedundancy: function(pName) {
 			delete this.processObject[pName];
