@@ -194,7 +194,7 @@ export default {
 }
 
 .brutal-pieces {
-	/* border: 1px solid black; */
+	border-left: 1px solid black;
 	border-right: none;
 	float: left;
 	text-align: center;
