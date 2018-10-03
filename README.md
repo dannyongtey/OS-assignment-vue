@@ -1,6 +1,8 @@
 # os-assignment
 
-> A Vue.js project
+> A Vue.js project for simulation of first come first serve, round-robin, three-level queue and shortest job first algorithm with real time updates on the UI.
+
+> Visit the deployed project at https://goo.gl/mdMwwc
 
 ## Build Setup
 
@@ -17,5 +19,8 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### Credits
+Credits to:
+1. Danny Tey (Me)
+2. Prev Wong
+3. Yeo Yong Yaw
